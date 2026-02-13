@@ -1,0 +1,226 @@
+/* Reset */
+
+/* HOME PAGE */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+    background-color: #f8fafc;
+    color: #0a1f44;
+}
+
+/* Navbar */
+nav {
+    background-color: #0f172a;
+    padding: 15px 60px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav h1 {
+    color: white;
+    font-size: 24px;
+}
+
+.nav-links a {
+    color: white;
+    text-decoration: none;
+    margin-left: 20px;
+    font-weight: 500;
+    transition: 0.3s;
+}
+
+.nav-links a:hover {
+    color: #14b8a6;
+}
+
+/* Hero Section */
+.hero {
+    height: 90vh;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 80px;
+}
+
+.hero-text {
+    max-width: 50%;
+}
+
+.hero-text h2 {
+    font-size: 48px;
+    margin-bottom: 20px;
+}
+
+.hero-text span {
+    color: #14b8a6;
+}
+
+.hero-text p {
+    font-size: 18px;
+    margin-bottom: 30px;
+    line-height: 1.6;
+}
+
+.btn {
+    padding: 12px 25px;
+    background-color: #14b8a6;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    text-decoration: none;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.btn:hover {
+    background-color: #0a1f44;
+}
+
+/* Hero Image */
+.hero-image img {
+    width: 350px;
+}
+
+/* Features Section */
+.features {
+    padding: 60px 80px;
+    text-align: center;
+}
+
+.features h3 {
+    font-size: 32px;
+    margin-bottom: 40px;
+}
+
+.feature-container {
+    display: flex;
+    justify-content: space-around;
+    gap: 20px;
+}
+
+.card {
+    background: white;
+    padding: 30px;
+    width: 30%;
+    border-radius: 10px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-8px);
+}
+
+.card h4 {
+    margin-bottom: 15px;
+}
+
+.card p {
+    font-size: 15px;
+    line-height: 1.5;
+}
+
+/* Footer */
+footer {
+    background-color: #0a1f44;
+    color: white;
+    text-align: center;
+    padding: 15px;
+    margin-top: 40px;
+}
+
+/* Responsive */
+@media(max-width: 900px) {
+    .hero {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .hero-text {
+        max-width: 100%;
+    }
+
+    .feature-container {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .card {
+        width: 80%;
+    }
+}
+
+
+/* LOGIN PAGE */
+
+/* Login Page */
+
+.login-container {
+    height: 100vh;
+    background: linear-gradient(to right, #0a1f44, #14b8a6);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-align: center;
+}
+
+.login-container h2 {
+    font-size: 40px;
+    margin-bottom: 10px;
+}
+
+.login-container p {
+    margin-bottom: 40px;
+    font-size: 18px;
+}
+
+.login-buttons {
+    display: flex;
+    gap: 30px;
+}
+
+.login-buttons a {
+    text-decoration: none;
+    padding: 15px 35px;
+    border-radius: 8px;
+    font-size: 18px;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+.student-btn {
+    background-color: white;
+    color: #0a1f44;
+}
+
+.student-btn:hover {
+    background-color: #f4f8fb;
+    transform: scale(1.05);
+}
+
+.admin-btn {
+    background-color: #0a1f44;
+    color: white;
+    border: 2px solid white;
+}
+
+.admin-btn:hover {
+    background-color: #08306b;
+    transform: scale(1.05);
+}
+
+/* Responsive */
+@media(max-width: 700px) {
+    .login-buttons {
+        flex-direction: column;
+    }
+}
