@@ -2,11 +2,11 @@
   <img src="./img.png" alt="Project Banner" width="100%">
 </p>
 
-# [Project Name] 🎯
+# [ 🎯campusIQ]
 
 ## Basic Details
 
-### Team Name: [Name]
+### Team Name: [nishana]
 
 ### Team Members
 - Member 1: [DIYANA] - [EMEA arts and science College]
