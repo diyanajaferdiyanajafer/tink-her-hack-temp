@@ -9,73 +9,35 @@
 ### Team Name: [Name]
 
 ### Team Members
-- Member 1: [Name] - [College]
-- Member 2: [Name] - [College]
+- Member 1: [DIYANA] - [EMEA arts and science College]
+- Member 2: [NISHANA] - [EMEA arts and science College]
 
-### Hosted Project Link
-[mention your project hosted link here]
+### Hosted Project LinK
+[https://diyanajaferdiyanajafer.github.io/tink-her-hack-temp/]
 
 ### Project Description
-[2-3 lines about what your project does]
+[CampusIQ is a web application designed for college management. It enables students to submit complaints, access exam and event information, and interact with a chatbot, while admins can efficiently manage complaints, exams, and events.]
+
 
 ### The Problem statement
-[What problem are you solving?]
+[Students and administrators face communication gaps, leading to delays in complaint handling, exam updates, and event notifications.]
 
 ### The Solution
-[How are you solving it?]
+[CampusIQ is a web-based platform that allows students to submit complaints, view exams and events, and get quick info via a chatbot, while admins can manage complaints and update schedules in real time.]
 
----
 
-## Technical Details
-
-### Technologies/Components Used
-
-**For Software:**
-- Languages used: [e.g., JavaScript, Python, Java]
-- Frameworks used: [e.g., React, Django, Spring Boot]
-- Libraries used: [e.g., axios, pandas, JUnit]
-- Tools used: [e.g., VS Code, Git, Docker]
-
-**For Hardware:**
-- Main components: [List main components]
-- Specifications: [Technical specifications]
-- Tools required: [List tools needed]
-
----
 
 ## Features
 
 List the key features of your project:
-- Feature 1: [Description]
-- Feature 2: [Description]
-- Feature 3: [Description]
-- Feature 4: [Description]
+- Feature 1: [Student and Admin login with authentication]
+- Feature 2: [Complaint submission and tracking]
+- Feature 3: [Dynamic display of exams and events]
+- Feature 4: [Hardcoded chatbot for instant assistance]
 
 ---
 
 ## Implementation
-
-### For Software:
-
-#### Installation
-```bash
-[Installation commands - e.g., npm install, pip install -r requirements.txt]
-```
-
-#### Run
-```bash
-[Run commands - e.g., npm start, python app.py]
-```
-
-### For Hardware:
-
-#### Components Required
-[List all components needed with specifications]
-
-#### Circuit Setup
-[Explain how to set up the circuit]
-
----
 
 ## Project Documentation
 
@@ -83,14 +45,17 @@ List the key features of your project:
 
 #### Screenshots (Add at least 3)
 
-![Screenshot1](Add screenshot 1 here with proper name)
-*Add caption explaining what this shows*
+<img width="1366" height="768" alt="Screenshot 2026-02-14 102257" src="https://github.com/user-attachments/assets/b5789dac-5b95-4965-abfc-dd4e1439dcaa" />
+Home Page
 
-![Screenshot2](Add screenshot 2 here with proper name)
-*Add caption explaining what this shows*
+<img width="1366" height="720" alt="Screenshot 2026-02-14 102333" src="https://github.com/user-attachments/assets/9916586f-9219-4e0b-8d0e-58e5b8a44bb0" />
+Login Page
 
-![Screenshot3](Add screenshot 3 here with proper name)
-*Add caption explaining what this shows*
+<img width="1366" height="720" alt="Screenshot 2026-02-14 102423" src="https://github.com/user-attachments/assets/4eaa25bc-c174-47e1-8706-b0160a3647a0" />
+student Dashboard
+
+<img width="1366" height="720" alt="Screenshot 2026-02-14 102452" src="https://github.com/user-attachments/assets/0573ea7b-9daa-4a38-bacb-76297e12b984" />
+Admin Dashboard
 
 #### Diagrams
 
@@ -105,16 +70,6 @@ List the key features of your project:
 *Add caption explaining your workflow*
 
 ---
-
-### For Hardware:
-
-#### Schematic & Circuit
-
-![Circuit](Add your circuit diagram here)
-*Add caption explaining connections*
-
-![Schematic](Add your schematic diagram here)
-*Add caption explaining the schematic*
 
 #### Build Photos
 
@@ -174,61 +129,6 @@ List the key features of your project:
 [Add more endpoints as needed...]
 
 ---
-
-### For Mobile Apps:
-
-#### App Flow Diagram
-
-![App Flow](docs/app-flow.png)
-*Explain the user flow through your application*
-
-#### Installation Guide
-
-**For Android (APK):**
-1. Download the APK from [Release Link]
-2. Enable "Install from Unknown Sources" in your device settings:
-   - Go to Settings > Security
-   - Enable "Unknown Sources"
-3. Open the downloaded APK file
-4. Follow the installation prompts
-5. Open the app and enjoy!
-
-**For iOS (IPA) - TestFlight:**
-1. Download TestFlight from the App Store
-2. Open this TestFlight link: [Your TestFlight Link]
-3. Click "Install" or "Accept"
-4. Wait for the app to install
-5. Open the app from your home screen
-
-**Building from Source:**
-```bash
-# For Android
-flutter build apk
-# or
-./gradlew assembleDebug
-
-# For iOS
-flutter build ios
-# or
-xcodebuild -workspace App.xcworkspace -scheme App -configuration Debug
-```
-
----
-
-### For Hardware Projects:
-
-#### Bill of Materials (BOM)
-
-| Component | Quantity | Specifications | Price | Link/Source |
-|-----------|----------|----------------|-------|-------------|
-| Arduino Uno | 1 | ATmega328P, 16MHz | ₹450 | [Link] |
-| LED | 5 | Red, 5mm, 20mA | ₹5 each | [Link] |
-| Resistor | 5 | 220Ω, 1/4W | ₹1 each | [Link] |
-| Breadboard | 1 | 830 points | ₹100 | [Link] |
-| Jumper Wires | 20 | Male-to-Male | ₹50 | [Link] |
-| [Add more...] | | | | |
-
-**Total Estimated Cost:** ₹[Amount]
 
 #### Assembly Instructions
 
