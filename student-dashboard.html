@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CampusIQ - Student Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Top Navbar -->
+    <nav>
+        <h1>CampusIQ - Student</h1>
+        <a href="studentLogin.html" class="logout-btn">Logout</a>
+    </nav>
+
+    <div class="dashboard-container">
+
+        <!-- Chatbot Section -->
+        <div class="chat-container">
+            <div class="chat-box" id="chatBox">
+                <div class="bot-message">Hello 👋 Ask me about exams, HOD, lab, events, or timetable.</div>
+            </div>
+            <div class="chat-input-area">
+                <input type="text" id="userInput" placeholder="Type your question...">
+                <button onclick="sendMessage()">Send</button>
+            </div>
+        </div>
+
+        <!-- Complaint Section -->
+        <div class="complaint-section">
+            <h2>📩 Submit Complaint</h2>
+            <form id="complaintForm">
+                <label>Name</label>
+                <input type="text" id="name" required>
+                <label>Department</label>
+                <select id="department" required>
+                    <option value="">Select</option>
+                    <option>BSc Science</option>
+                    <option>Commerce</option>
+                    <option>Arts</option>
+                    <option>BVoc</option>
+                </select>
+                <label>Complaint</label>
+                <textarea id="complaint" required></textarea>
+                <button type="submit">Submit Complaint</button>
+            </form>
+        </div>
+
+        <!-- College Events Section -->
+        <div class="event-section">
+            <h2>🎉 College Events</h2>
+            <div id="eventList"></div>
+        </div>
+
+        <!-- Latest Exam Info Section (moved below events) -->
+        <div class="exam-section">
+            <h2>📝 Latest Exam Info</h2>
+            <div id="examInfo"></div>
+        </div>
+
+    </div>
+
+    <!-- Chatbot JS -->
+    <script>
+    function sendMessage() {
+        const inputField = document.getElementById("userInput");
+        const message = inputField.value.toLowerCase();
+        const chatBox = document.getElementById("chatBox");
+
+        if (message === "") return;
+
+        chatBox.innerHTML += `<div class="user-message">${inputField.value}</div>`;
+
+        let reply = "";
+
+        if (message.includes("exam")) reply = "Internal exam starts on March 15 in Block B.";
+        else if (message.includes("hod")) reply = "The HOD of CSE is Dr. Anil Kumar.";
+        else if (message.includes("lab")) reply = "Lab 3 is located on the 2nd floor, Block A.";
+        else if (message.includes("event")) reply = "Annual Tech Fest is on April 10.";
+        else if (message.includes("timetable")) reply = "You can check your timetable in the timetable section.";
+        else reply = "Sorry, I don't understand. Please contact admin.";
+
+        chatBox.innerHTML += `<div class="bot-message">${reply}</div>`;
+        inputField.value = "";
+        chatBox.scrollTop = chatBox.scrollHeight;
+    }
+    </script>
+
+    <!-- Firebase JS -->
+    <script type="module">
+    import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+    import { getFirestore, collection, addDoc, getDocs } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+
+    const firebaseConfig = {
+      apiKey: "AIzaSyCaIzdXQ7OcYNBWiDMadA_-sRCp-C4MsbU",
+      authDomain: "campusiq-b0298.firebaseapp.com",
+      projectId: "campusiq-b0298",
+      storageBucket: "campusiq-b0298.firebasestorage.app",
+      messagingSenderId: "355486653667",
+      appId: "1:355486653667:web:3fba4f50427eb2d483b9d6",
+    };
+
+    const app = initializeApp(firebaseConfig);
+    const db = getFirestore(app);
+
+    // Complaint Form
+    const form = document.getElementById("complaintForm");
+    form.addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const name = document.getElementById("name").value;
+      const department = document.getElementById("department").value;
+      const complaint = document.getElementById("complaint").value;
+      try {
+        await addDoc(collection(db, "complaints"), {
+          name,
+          department,
+          complaint,
+          status: "Pending",
+          createdAt: new Date()
+        });
+        alert("Complaint submitted successfully!");
+        form.reset();
+      } catch (error) {
+        alert("Error: " + error.message);
+      }
+    });
+
+    // Load Events
+    const eventList = document.getElementById("eventList");
+    async function loadEvents() {
+        const querySnapshot = await getDocs(collection(db, "events"));
+        eventList.innerHTML = "";
+        querySnapshot.forEach((doc) => {
+            const data = doc.data();
+            eventList.innerHTML += `
+                <div class="event-card">
+                    <h3>${data.title}</h3>
+                    <p><strong>Date:</strong> ${data.date}</p>
+                    <p>${data.description}</p>
+                    <hr>
+                </div>
+            `;
+        });
+    }
+    loadEvents();
+
+    // Load Exams
+    const examInfo = document.getElementById("examInfo");
+    async function loadExamInfo() {
+        const querySnapshot = await getDocs(collection(db, "exams"));
+        examInfo.innerHTML = "";
+        querySnapshot.forEach((doc) => {
+            const data = doc.data();
+            examInfo.innerHTML += `
+                <div class="complaint-card">
+                    <p><strong>${data.title}</strong></p>
+                    <p>Date: ${data.date}</p>
+                    <p>Block: ${data.block}</p>
+                    <hr>
+                </div>
+            `;
+        });
+    }
+    loadExamInfo();
+    </script>
+
+</body>
+</html>

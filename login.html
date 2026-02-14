@@ -1,20 +1,36 @@
-<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>CampusIQ - Login</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <style>
+        /* Simple back arrow styling */
+        .back-arrow {
+            display: inline-block;
+            margin: 20px;
+            font-size: 24px;
+            text-decoration: none;
+            color: #0a1f44;
+            transition: color 0.3s;
+        }
+        .back-arrow:hover {
+            color: #14b8a6;
+        }
+    </style>
 </head>
 <body>
+
+    <!-- Back Arrow to Home -->
+    <a href="home.html" class="back-arrow">⬅ Back to Home</a>
 
     <div class="login-container">
         <h2>Welcome to CampusIQ</h2>
         <p>Select your role to continue</p>
 
         <div class="login-buttons">
-            <a href="#" class="student-btn">👩‍🎓 Student Login</a>
-            <a href="#" class="admin-btn">👨‍💼 Admin Login</a>
+            <a href="studentLogin.html" class="student-btn">👩‍🎓 Student Login</a>
+            <a href="admin-login.html" class="admin-btn">👨‍💼 Admin Login</a>
         </div>
     </div>
 

@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CampusIQ - Admin Login</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <style>
+        /* Back Arrow Style */
+        .back-arrow {
+            display: inline-block;
+            margin-bottom: 20px;
+            font-size: 24px;
+            color: #0a1f44;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .back-arrow:hover {
+            color: #14b8a6;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="form-container">
+        <div class="form-box">
+            <!-- Back Arrow -->
+            <a class="back-arrow" href="login.html">&#8592; Back</a>
+
+            <h2>👨‍💼 Admin Login</h2>
+
+            <form id="loginForm">
+                <label>User ID</label>
+                <input type="text" id="email" placeholder="Enter Admin ID" required>
+
+                <label>Password</label>
+                <input type="password" id="password" placeholder="Enter Password" required>
+
+                <button type="submit">Login</button>
+            </form>
+        </div>
+    </div>
+
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+        import { getAuth, signInWithEmailAndPassword } 
+        from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+
+        const firebaseConfig = {
+          apiKey: "AIzaSyCaIzdXQ7OcYNBWiDMadA_-sRCp-C4MsbU",
+          authDomain: "campusiq-b0298.firebaseapp.com",
+          projectId: "campusiq-b0298",
+          storageBucket: "campusiq-b0298.firebasestorage.app",
+          messagingSenderId: "355486653667",
+          appId: "1:355486653667:web:3fba4f50427eb2d483b9d6",
+        };
+
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+
+        const form = document.getElementById("loginForm");
+
+        form.addEventListener("submit", async (e) => {
+          e.preventDefault();
+
+          const email = document.getElementById("email").value;
+          const password = document.getElementById("password").value;
+
+          try {
+            await signInWithEmailAndPassword(auth, email, password);
+            alert("Login Successful!");
+            window.location.href = "admin-dashboard.html";
+          } catch (error) {
+            alert(error.message);
+          }
+        });
+    </script>
+
+</body>
+</html>

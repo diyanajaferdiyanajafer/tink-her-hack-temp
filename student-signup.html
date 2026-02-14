@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CampusIQ - Student Sign Up</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+
+</head>
+<body>
+
+<div class="form-container">
+    <div class="form-box">
+        <h2>📝 Student Registration</h2>
+
+        <form id="signupForm">
+
+            <label>User ID</label>
+            <input type="text" placeholder="Enter User ID" required>
+
+            <label>Full Name</label>
+            <input type="text" placeholder="Enter Full Name" required>
+
+            <label>Email ID</label>
+            <input type="email" id="email" placeholder="Enter Email ID" required>
+
+
+            <label>Password</label>
+            <input type="password" id="password" placeholder="Create Password" required>
+
+
+            <label>Department</label>
+            <select required>
+                <option value="">Select Department</option>
+                <option>BSc Science</option>
+                <option>Commerce</option>
+                <option>Arts</option>
+                <option>BVoc</option>
+            </select>
+
+            <button type="submit" class="login-btn">Create Account</button>
+
+        </form>
+
+        <p class="signup-text">
+            Already have an account?
+            <a href="studentLogin.html">Login</a>
+        </p>
+
+    </div>
+</div>
+
+<script type="module">
+
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } 
+from "https://www.gstatic.com/firebasejs/10.12.0/firebase-auth.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyCaIzdXQ7OcYNBWiDMadA_-sRCp-C4MsbU",
+  authDomain: "campusiq-b0298.firebaseapp.com",
+  projectId: "campusiq-b0298",
+  storageBucket: "campusiq-b0298.firebasestorage.app",
+  messagingSenderId: "355486653667",
+  appId: "1:355486653667:web:3fba4f50427eb2d483b9d6",
+};
+
+const app = initializeApp(firebaseConfig);
+const auth = getAuth(app);
+
+
+
+const form = document.getElementById("signupForm");
+
+form.addEventListener("submit", async (e) => {
+  e.preventDefault();
+
+  const email = document.getElementById("email").value;
+  const password = document.getElementById("password").value;
+
+  try {
+    await createUserWithEmailAndPassword(auth, email, password);
+    alert("Account created successfully!");
+  } catch (error) {
+    alert(error.message);
+  }
+});
+
+</script>
+</body>
+</html>

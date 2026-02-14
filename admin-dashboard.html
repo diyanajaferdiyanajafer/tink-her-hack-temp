@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>CampusIQ - Admin Dashboard</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Navbar -->
+    <nav>
+        <h1>CampusIQ - Admin</h1>
+        <a href="admin-login.html" class="logout-btn">Logout</a>
+    </nav>
+
+    <div class="admin-container">
+
+        <!-- Dashboard Overview -->
+        <div class="admin-card">
+            <h2>📊 Dashboard Overview</h2>
+            <p>Total Students: 3000</p>
+            <p>Total Faculty: 150</p>
+            <p>Total Departments: 14</p>
+            <p>Total Complaints: 32</p>
+        </div>
+
+        <!-- View Complaints -->
+        <div class="admin-card">
+            <h2>📩 View Complaints</h2>
+           <div id="complaintList"></div>
+
+        </div>
+
+        <!-- Update Exam Info -->
+        <div class="admin-card">
+            <h2>📝 Update College Event Info</h2>
+            <form id="eventForm">
+    <input type="text" id="eventTitle" placeholder="Event Title" required>
+    <input type="date" id="eventDate" required>
+    <textarea id="eventDescription" placeholder="Event Description" required></textarea>
+    <button type="submit">Add Event</button>
+</form>
+
+
+   
+
+        </div>
+
+        <!-- Update College Event Info -->
+        <div class="admin-card">
+            <h2>🎉 Update exam Info</h2>
+            <form id="examForm">
+    <input type="text" id="examTitle" placeholder="Exam Title (e.g. Internal Exam)">
+    <input type="date" id="examDate">
+    <input type="text" id="examBlock" placeholder="Exam Block (e.g. Block B)">
+    <button type="submit">Update</button>
+</form>
+
+            </form>
+        </div>
+
+    </div>
+    <script type="module">
+
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.0/firebase-app.js";
+import { getFirestore, collection, getDocs, addDoc } 
+
+ 
+ 
+from "https://www.gstatic.com/firebasejs/10.12.0/firebase-firestore.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyCaIzdXQ7OcYNBWiDMadA_-sRCp-C4MsbU",
+  authDomain: "campusiq-b0298.firebaseapp.com",
+  projectId: "campusiq-b0298",
+  storageBucket: "campusiq-b0298.firebasestorage.app",
+  messagingSenderId: "355486653667",
+  appId: "1:355486653667:web:3fba4f50427eb2d483b9d6",
+};
+
+const app = initializeApp(firebaseConfig);
+const db = getFirestore(app);
+
+const complaintList = document.getElementById("complaintList");
+
+async function loadComplaints() {
+    const querySnapshot = await getDocs(collection(db, "complaints"));
+
+    complaintList.innerHTML = "";
+
+    querySnapshot.forEach((doc) => {
+        const data = doc.data();
+
+        complaintList.innerHTML += `
+            <div class="complaint-card">
+                <p><strong>Name:</strong> ${data.name}</p>
+                <p><strong>Department:</strong> ${data.department}</p>
+                <p><strong>Complaint:</strong> ${data.complaint}</p>
+                <p><strong>Status:</strong> ${data.status}</p>
+                <hr>
+            </div>
+        `;
+    });
+}
+
+loadComplaints();
+const eventForm = document.getElementById("eventForm");
+
+eventForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const title = document.getElementById("eventTitle").value;
+    const date = document.getElementById("eventDate").value;
+    const description = document.getElementById("eventDescription").value;
+
+    try {
+        await addDoc(collection(db, "events"), {
+            title: title,
+            date: date,
+            description: description,
+            createdAt: new Date()
+        });
+
+        alert("Event added successfully!");
+        eventForm.reset();
+    } catch (error) {
+        alert("Error: " + error.message);
+    }
+});
+
+
+const examForm = document.getElementById("examForm");
+
+examForm.addEventListener("submit", async (e) => {
+    e.preventDefault();
+
+    const title = document.getElementById("examTitle").value;
+    const date = document.getElementById("examDate").value;
+    const block = document.getElementById("examBlock").value;
+
+    try {
+        await addDoc(collection(db, "exams"), {
+            title: title,
+            date: date,
+            block: block,
+            createdAt: new Date()
+        });
+
+        alert("Exam details added successfully!");
+        examForm.reset();
+    } 
+    catch (error) {
+        alert("Error: " + error.message);
+    }
+});
+</script>
+
+
+
+</body>
+</html>
